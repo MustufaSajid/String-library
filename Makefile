@@ -6,8 +6,8 @@ TEST_DIR := tests
 BUILD_DIR := build
 BIN_DIR := $(BUILD_DIR)/bin
 
-SRC_FILES := $(SRC_DIR)/main.c
-OBJ_FILES := $(BUILD_DIR)/main.o
+SRC_FILES := $(SRC_DIR)/mystring.c
+OBJ_FILES := $(BUILD_DIR)/mystring.o
 TEST_FILES := $(wildcard $(TEST_DIR)/test_*.c)
 TEST_NAMES := $(basename $(notdir $(TEST_FILES)))
 TEST_BIN := $(addprefix $(BIN_DIR)/,$(TEST_NAMES))

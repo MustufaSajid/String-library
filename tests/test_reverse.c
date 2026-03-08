@@ -1,4 +1,4 @@
-#include "../include/common.h"
+#include "common.h"
 
 void test_reverse_null(void)
 {

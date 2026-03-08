@@ -1,4 +1,7 @@
 #include "../include/my_string.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int my_strcmp(const char *str1, const char *str2) {
   int i = 0;
@@ -148,9 +151,16 @@ char **my_split(const char *str, char delim) {
   return result;
 }
 
-void free_split(char **arr) {
-  for (int i = 0; arr[i] != NULL; i++)
-    free(arr[i]);
+void free_split(char ***arr) {
+  if(arr==NULL || *arr == NULL){
+    return;
+  }
+    char **temp = *arr;
+    for(int i = 0; temp[i] != NULL; i++){
+      free(temp[i]);
+    }
+    free(temp);
 
-  free(arr);
-}
+    *arr = NULL;
+  }
+    

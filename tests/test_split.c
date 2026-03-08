@@ -7,7 +7,7 @@ void test_basic_split(void)
     TEST_CHECK(strcmp(r[1], "b") == 0);
     TEST_CHECK(strcmp(r[2], "c") == 0);
     TEST_CHECK(r[3] == NULL);
-    free_split(r);
+    free_split(&r);
 }
 
 void test_single_word(void)
@@ -15,21 +15,21 @@ void test_single_word(void)
     char **r = my_split("hello", ',');
     TEST_CHECK(strcmp(r[0], "hello") == 0);
     TEST_CHECK(r[1] == NULL);
-    free_split(r);
+    free_split(&r);
 }
 
 void test_empty_string(void)
 {
     char **r = my_split("", ',');
     TEST_CHECK(r[0] == NULL);
-    free_split(r);
+    free_split(&r);
 }
 
 void test_only_delimiters(void)
 {
     char **r = my_split(",,,", ',');
     TEST_CHECK(r[0] == NULL);
-    free_split(r);
+    free_split(&r);
 }
 
 void test_multiple_delimiters(void)
@@ -39,7 +39,7 @@ void test_multiple_delimiters(void)
     TEST_CHECK(strcmp(r[1], "b") == 0);
     TEST_CHECK(strcmp(r[2], "c") == 0);
     TEST_CHECK(r[3] == NULL);
-    free_split(r);
+    free_split(&r);
 }
 
 void test_leading_trailing(void)
@@ -48,13 +48,13 @@ void test_leading_trailing(void)
     TEST_CHECK(strcmp(r1[0], "a") == 0);
     TEST_CHECK(strcmp(r1[1], "b") == 0);
     TEST_CHECK(r1[2] == NULL);
-    free_split(r1);
+    free_split(&r1);
 
     char **r2 = my_split("a,b,", ',');
     TEST_CHECK(strcmp(r2[0], "a") == 0);
     TEST_CHECK(strcmp(r2[1], "b") == 0);
     TEST_CHECK(r2[2] == NULL);
-    free_split(r2);
+    free_split(&r2);
 }
 
 void test_spaces(void)
@@ -64,7 +64,7 @@ void test_spaces(void)
     TEST_CHECK(strcmp(r[1], "two") == 0);
     TEST_CHECK(strcmp(r[2], "three") == 0);
     TEST_CHECK(r[3] == NULL);
-    free_split(r);
+    free_split(&r);
 }
 
 TEST_LIST = {
