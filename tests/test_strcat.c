@@ -5,7 +5,7 @@ void test_strcat_normal(void)
     char dest[50] = "Hello, ";
     int ret = my_strcat(dest, "World!", sizeof(dest));
     TEST_CHECK(ret == 0);
-    TEST_CHECK(strcmp(dest, "Hello, World!") == 0);
+    TEST_CHECK(my_strcmp(dest, "Hello, World!") == 0);
 }
 
 void test_strcat_empty_append(void)
@@ -13,7 +13,7 @@ void test_strcat_empty_append(void)
     char dest[50] = "Hello";
     int ret = my_strcat(dest, "", sizeof(dest));
     TEST_CHECK(ret == 0);
-    TEST_CHECK(strcmp(dest, "Hello") == 0);
+    TEST_CHECK(my_strcmp(dest, "Hello") == 0);
 }
 
 void test_strcat_empty_dest(void)
@@ -21,7 +21,7 @@ void test_strcat_empty_dest(void)
     char dest[50] = "";
     int ret = my_strcat(dest, "Hello", sizeof(dest));
     TEST_CHECK(ret == 0);
-    TEST_CHECK(strcmp(dest, "Hello") == 0);
+    TEST_CHECK(my_strcmp(dest, "Hello") == 0);
 }
 
 void test_strcat_buffer_too_small(void)

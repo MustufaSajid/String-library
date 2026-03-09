@@ -3,6 +3,5 @@
 
 #include "acutest.h"
 #include "../include/my_string.h"
-#include <string.h>
 
 #endif

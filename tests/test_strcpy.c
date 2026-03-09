@@ -3,7 +3,7 @@
 void test_strcpy_normal(void)
 {
     char dest[50];
-    char *ret = my_strcpy(dest, "hello");
+    char *ret = my_strcpy(dest, "hello", sizeof(dest));
     TEST_CHECK(ret == dest);
     TEST_CHECK(my_strcmp(dest, "hello") == 0);
 }
@@ -11,7 +11,7 @@ void test_strcpy_normal(void)
 void test_strcpy_empty(void)
 {
     char dest[50];
-    char *ret = my_strcpy(dest, "");
+    char *ret = my_strcpy(dest, "", sizeof(dest));
     TEST_CHECK(ret == dest);
     TEST_CHECK(my_strcmp(dest, "") == 0);
 }
@@ -19,7 +19,7 @@ void test_strcpy_empty(void)
 void test_strcpy_long(void)
 {
     char dest[100];
-    char *ret = my_strcpy(dest, "This is a longer test string.");
+    char *ret = my_strcpy(dest, "This is a longer test string.", sizeof(dest));
     TEST_CHECK(ret == dest);
     TEST_CHECK(my_strcmp(dest, "This is a longer test string.") == 0);
 }
@@ -30,35 +30,35 @@ void test_strcpy_very_long(void)
     for (int i = 0; i < 999; i++)
         src[i] = 'A' + (i % 26);
     src[999] = '\0';
-    char *ret = my_strcpy(dest, src);
+    char *ret = my_strcpy(dest, src, sizeof(dest));
     TEST_CHECK(ret == dest);
-    TEST_CHECK(strcmp(dest, src) == 0);
+    TEST_CHECK(my_strcmp(dest, src) == 0);
 }
 
 void test_strcpy_special(void)
 {
     char dest[50];
-    char *ret = my_strcpy(dest, "123!@#abc\n\t\r");
+    char *ret = my_strcpy(dest, "123!@#abc\n\t\r", sizeof(dest));
     TEST_CHECK(ret == dest);
     TEST_CHECK(my_strcmp(dest, "123!@#abc\n\t\r") == 0);
 }
 
 void test_strcpy_destination_null(void)
 {
-    char *ret = my_strcpy(NULL, "hello");
+    char *ret = my_strcpy(NULL, "hello", 50);
     TEST_CHECK(ret == NULL);
 }
 
 void test_strcpy_source_null(void)
 {
     char dest[50];
-    char *ret = my_strcpy(dest, NULL);
+    char *ret = my_strcpy(dest, NULL, sizeof(dest));
     TEST_CHECK(ret == NULL);
 }
 
 void test_strcpy_both_null(void)
 {
-    char *ret = my_strcpy(NULL, NULL);
+    char *ret = my_strcpy(NULL, NULL, 50);
     TEST_CHECK(ret == NULL);
 }
 

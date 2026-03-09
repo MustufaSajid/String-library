@@ -2,40 +2,40 @@
 
 void test_reverse_null(void)
 {
-    int ret = reverse(NULL);
+    int ret = my_strrev(NULL);
     TEST_CHECK(ret == -1);
 }
 
 void test_reverse_empty(void)
 {
     char str[] = "";
-    int ret = reverse(str);
+    int ret = my_strrev(str);
     TEST_CHECK(ret == 0);
-    TEST_CHECK(strcmp(str, "") == 0);
+    TEST_CHECK(my_strcmp(str, "") == 0);
 }
 
 void test_reverse_single(void)
 {
     char str[] = "A";
-    int ret = reverse(str);
+    int ret = my_strrev(str);
     TEST_CHECK(ret == 0);
-    TEST_CHECK(strcmp(str, "A") == 0);
+    TEST_CHECK(my_strcmp(str, "A") == 0);
 }
 
 void test_reverse_normal(void)
 {
     char str[] = "Hello";
-    int ret = reverse(str);
+    int ret = my_strrev(str);
     TEST_CHECK(ret == 0);
-    TEST_CHECK(strcmp(str, "olleH") == 0);
+    TEST_CHECK(my_strcmp(str, "olleH") == 0);
 }
 
 void test_reverse_complex(void)
 {
     char str[] = "A B!C";
-    int ret = reverse(str);
+    int ret = my_strrev(str);
     TEST_CHECK(ret == 0);
-    TEST_CHECK(strcmp(str, "C!B A") == 0);
+    TEST_CHECK(my_strcmp(str, "C!B A") == 0);
 }
 
 TEST_LIST = {
